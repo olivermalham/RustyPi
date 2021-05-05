@@ -2,3 +2,8 @@ To compile and run:
 
 > cargo run
 
+Goal:
+
+Write a replacement / version of FarPi but using Rust. No real reason, just want a real project to use to learn the language.
+Might also port the front end to Rust compiling to webassembler, but that is more a stretch goal.
+
