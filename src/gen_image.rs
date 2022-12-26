@@ -1,11 +1,13 @@
 extern crate image;
 extern crate num_complex;
 
+use image::error::UnsupportedErrorKind::Color;
 use image::Rgb;
+use imageproc::drawing::{ draw_line_segment_mut };
 
 
 /// An example of generating julia fractals.
-pub fn generate(imgx: u32, imgy: u32) -> image::ImageBuffer<Rgb<u8>, Vec<u8>>{
+pub fn generate(imgx: u32, imgy: u32) -> image::ImageBuffer<Rgb<u8>, Vec<u8>> {
 
     let scalex = 3.0 / imgx as f32;
     let scaley = 3.0 / imgy as f32;
@@ -40,6 +42,11 @@ pub fn generate(imgx: u32, imgy: u32) -> image::ImageBuffer<Rgb<u8>, Vec<u8>>{
             *pixel = image::Rgb([data[0], i as u8, data[2]]);
         }
     }
+
+    let line_colour = Rgb([255u8, 255u8, 0u8]);
+
+    draw_line_segment_mut(&mut imgbuf, (0.0,0.0), (imgx as f32,imgy as f32), line_colour);
+    draw_line_segment_mut(&mut imgbuf, (imgx as f32,0.0), (0.0,imgy as f32), line_colour);
 
     return imgbuf;
 }
