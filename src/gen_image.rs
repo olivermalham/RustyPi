@@ -1,7 +1,7 @@
 extern crate image;
 extern crate num_complex;
 
-use image::{ImageBuffer, Rgb};
+use image::Rgb;
 
 
 /// An example of generating julia fractals.
