@@ -15,7 +15,11 @@ fn index() -> (ContentType, Vec<u8>) {
     let imgx = 1800;
     let imgy = 800;
 
-    let imgbuf = generate(imgx, imgy);
+    let mut imgbuf = generate(imgx, imgy);
+
+    for n in 1..100 {
+        imgbuf = generate(imgx, imgy);
+    }
     let mut bytes: Cursor<Vec<u8>> = Cursor::new(Vec::new());
     imgbuf.write_to(&mut bytes, image::ImageOutputFormat::from(image::ImageFormat::Jpeg)).expect("");
 

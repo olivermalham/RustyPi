@@ -1,5 +1,6 @@
 extern crate image;
 extern crate num_complex;
+// extern crate imageproc;
 
 use image::error::UnsupportedErrorKind::Color;
 use image::Rgb;
